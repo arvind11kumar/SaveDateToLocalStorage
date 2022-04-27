@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>use Local storage</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        .flex_div{
+            background-color: silver;
+            height: 300px;
+            width: 400px;
+            position: relative;
+            margin-left: 40px;
+            
+        }
+        .flex_div form{
+            display: block;
+            margin-top: 10px;
+            margin-left: 40px;
+
+        }
+        .flex_div form input{
+            height: 30px;
+            width: 200px;
+            margin-top: 20px;
+        }
+        .style_btn{
+            height: 35px;
+            width: 85px;
+            border: 1px solid green;
+            background-color: aqua;
+            color: blueviolet;
+            border-radius: 22px;
+
+        }
+
+       .flex_all{
+           display: flex;
+       }
+
+
+    </style>
+    
+</head>
+<body>
+    <div>
+        <h1>showing_data_using_local_storage</h1>
+    </div>
+    <div class="flex_all">
+    <div class="flex_div">
+        
+        <form>
+            <input type="text" class="input_data" name="name" placeholder="enter name">
+            <button type="button" class="btn1 style_btn" >submit</button>
+        </form>
+    </div>
+    
+    <div class="flex_div">
+        <form>
+            
+            <button type="button" class="btn2 style_btn" >show_data</button>
+            <h1 class="showing"></h1>
+        </form>
+    </div>
+</div>
+    <script>
+let input_data=document.querySelector(".input_data");
+let submit_data=document.querySelector(".btn1");
+let show_data=document.querySelector(".btn2");
+let showing=document.querySelector(".showing");
+
+let keyvalue=input_data.name;
+let input_value=input_data.value;
+
+submit_data.addEventListener("click",function(){
+
+    console.log(input_data.value);
+    console.log(keyvalue);
+
+    localStorage.setItem(keyvalue,input_data.value);
+    
+
+})
+
+show_data.addEventListener("click",function(){
+   // showing.innerHTML=input_data.value;
+    //window.localStorage();
+    let showLocaldata=localStorage.getItem(keyvalue);
+   // console.log(showLocaldata);
+    showing.innerHTML=showLocaldata;
+})
+
+
+    </script>
+</body>
+</html>
